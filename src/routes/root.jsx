@@ -5,7 +5,6 @@ export default function Root() {
   return (
     <>
       <div className="App">
-        <Header />
         <Homepage />
       </div>
     </>
