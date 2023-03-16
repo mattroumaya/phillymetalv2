@@ -1,5 +1,6 @@
 import SupabaseQuery from "../SupabaseQuery/SupabaseQuery";
 import React from "react";
+import "../Homepage/Homepage.scss";
 
 const Homepage = () => {
   // query data from db
