@@ -2,7 +2,7 @@ import DataTable from "react-data-table-component";
 import SupabaseQuery from "../SupabaseQuery/SupabaseQuery";
 
 const ArchiveTable = () => {
-  const data = SupabaseQuery();
+  const data = SupabaseQuery("past");
 
   const columns = [
     {

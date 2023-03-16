@@ -3,7 +3,7 @@ import React from "react";
 
 const Homepage = () => {
   // query data from db
-  const data = SupabaseQuery();
+  const data = SupabaseQuery("future");
 
   // set headers as unique show dates
   let headers = [
