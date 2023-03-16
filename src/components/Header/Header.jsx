@@ -1,4 +1,5 @@
 import logo from "../../assets/logo.png";
+import "../Header/Header.scss";
 
 const Header = () => {
   return (
@@ -26,13 +27,11 @@ const Header = () => {
           </a>
         </nav>
 
-        <center>
-          <div className="logo">
-            <a href="https://www.phillymetal.net">
-              <img alt="phillymetal.net logo" src={logo} className="logo" />
-            </a>
-          </div>
-        </center>
+        <div className="logo-header">
+          <a href="https://www.phillymetal.net">
+            <img alt="phillymetal.net logo" src={logo} className="logo" />
+          </a>
+        </div>
       </header>
     </>
   );

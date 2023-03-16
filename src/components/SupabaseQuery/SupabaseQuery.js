@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 
-export default function SupabaseQuery() {
+export default function SupabaseQuery(dateRange) {
   const [allData, setAllData] = useState([]);
 
   const supabase = createClient(
@@ -13,17 +13,28 @@ export default function SupabaseQuery() {
 
   useEffect(() => {
     async function getData() {
-      let { data, error } = await supabase
-        .from("main")
-        .select("*")
-        .gte("show_date", `${datenow}`)
-        .eq("validated", "true")
-        .order("show_date");
-      data = await data;
-      setAllData(data);
+      if (dateRange === "future") {
+        let { data, error } = await supabase
+          .from("main")
+          .select("*")
+          .gte("show_date", `${datenow}`)
+          .eq("validated", "true")
+          .order("show_date");
+        data = await data;
+        setAllData(data);
+      } else if (dateRange === "past") {
+        let { data, error } = await supabase
+          .from("main")
+          .select("*")
+          .lt("show_date", `${datenow}`)
+          .eq("validated", "true")
+          .order("show_date");
+        data = await data;
+        setAllData(data);
+      }
     }
     getData();
-  }, []);
+  }, [allData]);
 
   return allData;
 }
