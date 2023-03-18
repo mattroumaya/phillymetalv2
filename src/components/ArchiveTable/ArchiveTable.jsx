@@ -1,9 +1,7 @@
 import DataTable from "react-data-table-component";
 import SupabaseQuery from "../SupabaseQuery/SupabaseQuery";
 
-const ArchiveTable = () => {
-  const data = SupabaseQuery("past");
-
+const ArchiveTable = ({ allData }) => {
   const columns = [
     {
       name: "Date",
@@ -19,7 +17,12 @@ const ArchiveTable = () => {
     },
   ];
 
-  return <DataTable columns={columns} data={data} />;
+  return (
+    <>
+      <h2>Archive</h2>
+      <DataTable columns={columns} data={allData} />
+    </>
+  );
 };
 
 export default ArchiveTable;

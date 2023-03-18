@@ -2,11 +2,10 @@ import SupabaseQuery from "../SupabaseQuery/SupabaseQuery";
 import React from "react";
 import "../Homepage/Homepage.scss";
 
-const Homepage = () => {
-  // query data from db
-  const data = SupabaseQuery("future");
+const Homepage = ({ allData }) => {
+  let data = allData;
 
-  // set headers as unique show dates
+  //  set headers as unique show dates
   let headers = [
     ...new Set(
       data.map((el) => {
@@ -37,7 +36,6 @@ const Homepage = () => {
       </>
     );
   });
-
   return <>{links}</>;
 };
 

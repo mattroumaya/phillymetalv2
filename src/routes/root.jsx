@@ -1,11 +1,9 @@
-import Header from "../components/Header/Header";
-import Homepage from "../components/Homepage/Homepage";
-
+import SupabaseQuery from "../components/SupabaseQuery/SupabaseQuery";
 export default function Root() {
   return (
     <>
       <div className="App">
-        <Homepage />
+        <SupabaseQuery />
       </div>
     </>
   );
