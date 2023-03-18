@@ -1,5 +1,5 @@
 import DataTable from "react-data-table-component";
-import SupabaseQuery from "../SupabaseQuery/SupabaseQuery";
+import subsetByDate from "../../../util/subsetByDate";
 
 const ArchiveTable = ({ allData }) => {
   const columns = [
@@ -20,7 +20,7 @@ const ArchiveTable = ({ allData }) => {
   return (
     <>
       <h2>Archive</h2>
-      <DataTable columns={columns} data={allData} />
+      <DataTable columns={columns} data={subsetByDate(allData, "past")} />
     </>
   );
 };

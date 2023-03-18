@@ -27,9 +27,9 @@ export default function SupabaseQuery() {
   return (
     <>
       <Homepage allData={allData} />
-      <ArchiveTable allData={allData} />
       <Newsletter />
       <Add />
+      <ArchiveTable allData={allData} />
     </>
   );
 }

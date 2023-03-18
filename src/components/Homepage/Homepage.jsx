@@ -1,9 +1,9 @@
-import SupabaseQuery from "../SupabaseQuery/SupabaseQuery";
 import React from "react";
 import "../Homepage/Homepage.scss";
+import subsetByDate from "../../../util/subsetByDate";
 
 const Homepage = ({ allData }) => {
-  let data = allData;
+  let data = subsetByDate(allData, "future");
 
   //  set headers as unique show dates
   let headers = [
