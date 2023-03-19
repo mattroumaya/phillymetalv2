@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import "../Add/Add.scss";
 
 export default function Add() {
-  const test = (e) => {
+  const submitAShow = (e) => {
     // initialize client
     const supabase = createClient(
       "https://itvifawsdgiynkldcfnv.supabase.co",
@@ -14,7 +14,7 @@ export default function Add() {
     const form = document.getElementById("submit-form");
 
     // insert form data
-    async function getData() {
+    async function addDataFromAnonymousMetalFan() {
       const { data, error } = await supabase.from("main").insert([
         {
           venue: form.elements["venue"].value,
@@ -27,7 +27,7 @@ export default function Add() {
       return data;
     }
 
-    getData();
+    addDataFromAnonymousMetalFan();
 
     // reset form
     [...form].forEach((el) => (el.value = ""));
@@ -44,7 +44,7 @@ export default function Add() {
     <>
       <p className="add-text">
         Thank you for submitting a show! <br />
-        Information will be sent over and will be posted after review.
+        Your data will be sent to the server and posted after review.
       </p>
       <form id="submit-form">
         <label htmlFor="date" className="add-label">
@@ -77,7 +77,7 @@ export default function Add() {
         <br />
         <input type="text" id="href" name="href" className="add-input" />
         <br />
-        <button id="submit" className="add-submit-btn" onClick={test}>
+        <button id="submit" className="add-submit-btn" onClick={submitAShow}>
           Submit
         </button>
       </form>

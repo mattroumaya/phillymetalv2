@@ -2,16 +2,6 @@ import logo from "../../assets/logo.png";
 import "../Header/Header.scss";
 import React, { useState } from "react";
 
-function toggleMenu() {
-  const burger = document.querySelector(".toggle-nav");
-  const menu = document.querySelector(".menu ul");
-
-  burger.addEventListener("click", () => {
-    burger.classList.toggle("active");
-    menu.classList.toggle("active");
-  });
-}
-
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
 
@@ -19,24 +9,44 @@ const Header = () => {
     setIsActive(!isActive);
   };
 
+  let location = window.location.pathname;
+
   return (
     <>
       <header>
         <nav className="menu">
           <ul className={`${isActive ? "" : "active"}`}>
             <li>
-              <a href="https://www.phillymetal.net" className="active">
+              <a
+                href="https://www.phillymetal.net"
+                className={`${location === "/" ? "active" : ""}`}
+              >
                 Home
               </a>
             </li>
             <li>
-              <a href="https://www.phillymetal.net/archive">Archive</a>
+              <a
+                href="https://www.phillymetal.net/archive"
+                className={`${location === "/archive" ? "active" : ""}`}
+              >
+                Archive
+              </a>
             </li>
             <li>
-              <a href="https://www.phillymetal.net/newsletter">Newsletter</a>
+              <a
+                href="https://www.phillymetal.net/newsletter"
+                className={`${location === "/newsletter" ? "active" : ""}`}
+              >
+                Newsletter
+              </a>
             </li>
             <li>
-              <a href="https://www.phillymetal.net/add">Add Something</a>
+              <a
+                href="https://www.phillymetal.net/add"
+                className={`${location === "/add" ? "active" : ""}`}
+              >
+                Add Something
+              </a>
             </li>
           </ul>
           <a
@@ -53,7 +63,6 @@ const Header = () => {
             <img alt="phillymetal.net logo" src={logo} className="logo" />
           </a>
         </div>
-        <script>toggleMenu();</script>
       </header>
     </>
   );

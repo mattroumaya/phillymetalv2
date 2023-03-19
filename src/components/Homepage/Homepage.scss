@@ -25,7 +25,7 @@ li {
 }
 
 main {
-  padding: 0px 15px;
+  padding: 0px 50px;
 }
 
 .show-link {
@@ -47,4 +47,11 @@ main {
 
 .show-link:hover {
   color: white;
+}
+
+.show-link {
+  padding: 7px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
 }

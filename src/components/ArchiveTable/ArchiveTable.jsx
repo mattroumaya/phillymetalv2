@@ -12,7 +12,7 @@ const ArchiveTable = () => {
       name: "Date",
       selector: (row) => row.show_date,
       sortable: true,
-      width: "10%",
+      width: "15%",
     },
     {
       name: "Venue",
@@ -39,10 +39,8 @@ const ArchiveTable = () => {
       style: {
         color: "white",
         backgroundColor: "black",
-      },
-      stripedStyle: {
-        color: "white",
-        backgroundColor: "black",
+        fontSize: "16px",
+        fontWeight: 400,
       },
     },
   };
@@ -57,7 +55,6 @@ const ArchiveTable = () => {
         customStyles={customStyles}
         highlightOnHover={true}
         dense
-        striped
       />
     </div>
   );
