@@ -2,14 +2,146 @@ nav {
   text-align: center;
 }
 
+.toggle-nav {
+  display: none;
+}
+
 .menu {
   font-family: monospace;
   text-align: center;
 }
 
+.menu ul {
+  display: inline-block;
+}
+
+.menu li {
+  margin: 0px 50px 0px 0px;
+  float: left;
+  list-style: none;
+  font-size: 17px;
+}
+
+.menu li:last-child {
+  margin-right: 0px;
+}
+
+.menu a {
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+  color: #777;
+  transition: color linear 0.15s;
+}
+
+.menu a:hover,
+.menu .current-item a {
+  text-decoration: none;
+  color: #9e07f5;
+}
+
 .logo {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+  margin: 0 auto;
+  max-width: 25%;
+}
+
+// responsive
+@media screen and (min-width: 860px) {
+  .menu {
+    width: 100%;
+    padding: 10px 18px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    background: #000000;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .wrap {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  header {
+    width: 100%;
+  }
+
+  main {
+    width: 100%;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .menu {
+    position: relative;
+    display: inline-block;
+  }
+
+  .menu ul.active {
+    display: none;
+  }
+
+  .menu ul {
+    width: 100%;
+    position: absolute;
+    top: 120%;
+    left: 0px;
+    padding: 10px 18px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    background: #000000;
+  }
+
+  .menu ul:after {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: 0%;
+    left: 22px;
+    content: "";
+    transform: translate(0%, -100%);
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #303030;
+  }
+
+  .menu li {
+    margin: 5px 0px 5px 0px;
+    float: none;
+    display: block;
+  }
+
+  .menu a {
+    display: block;
+  }
+
+  .toggle-nav {
+    padding: 20px;
+    float: left;
+    display: inline-block;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    background: black;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+    color: black;
+    font-size: 20px;
+    transition: color linear 0.15s;
+  }
+
+  .toggle-nav:hover,
+  .toggle-nav.active {
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  .archive-table {
+    width: 100%;
+  }
 }

@@ -1,25 +1,70 @@
 import DataTable from "react-data-table-component";
-import SupabaseQuery from "../SupabaseQuery/SupabaseQuery";
+import { useLoaderData } from "react-router-dom";
+import subsetByDate from "../../../util/subsetByDate";
+import "../ArchiveTable/ArchiveTable.scss";
 
 const ArchiveTable = () => {
-  const data = SupabaseQuery("past");
+  let { allData } = useLoaderData();
+  allData = subsetByDate(allData, "past");
 
   const columns = [
     {
       name: "Date",
       selector: (row) => row.show_date,
+      sortable: true,
+      width: "10%",
     },
     {
       name: "Venue",
       selector: (row) => row.venue,
+      sortable: true,
+      width: "20%",
     },
     {
       name: "Bands",
       selector: (row) => row.description,
+      wrap: true,
     },
   ];
 
-  return <DataTable columns={columns} data={data} />;
+  const tableCustomStyles = {
+    headRow: {
+      style: {
+        color: "#223336",
+        backgroundColor: "#e7eef0",
+      },
+    },
+    rows: {
+      style: {
+        color: "white",
+        backgroundColor: "black",
+      },
+      stripedStyle: {
+        color: "white",
+        backgroundColor: "black",
+      },
+    },
+    header: {
+      style: {
+        backgroundColor: "black",
+      },
+    },
+  };
+
+  return (
+    <div className="archive-table">
+      <DataTable
+        columns={columns}
+        data={allData}
+        defaultSortFieldId={1}
+        defaultSortAsc={false}
+        customStyles={tableCustomStyles}
+        highlightOnHover={true}
+        dense
+        striped
+      />
+    </div>
+  );
 };
 
 export default ArchiveTable;

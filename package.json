@@ -11,10 +11,11 @@
   "dependencies": {
     "@galaco/react-mailerlite-form": "^0.1.0",
     "@supabase/supabase-js": "^2.5.0",
+    "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.0",
+    "react-router-dom": "^6.9.0",
     "react-table-component": "^0.9.8"
   },
   "devDependencies": {
