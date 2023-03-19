@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: black;
   color: #cf170a;
@@ -24,7 +28,23 @@ main {
   padding: 0px 15px;
 }
 
-a {
+.show-link {
   padding: 15px;
   font-family: monospace;
+}
+
+.show-link:link {
+  color: #9e07f5;
+}
+
+.show-link:visited {
+  color: #9e07f5;
+}
+
+.show-link:active {
+  color: lime;
+}
+
+.show-link:hover {
+  color: white;
 }

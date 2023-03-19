@@ -1,0 +1,75 @@
+* {
+  font-family: monospace;
+}
+
+.contact-submit-btn {
+  font-family: monospace;
+  font-size: 16px;
+  background-color: #000000;
+  transition-duration: 0.4s;
+  color: white;
+  position: relative;
+  margin-top: 20%;
+  left: -38%;
+}
+
+.add-submit-btn {
+  font-family: monospace;
+  font-size: 16px;
+  background-color: black;
+  color: #9e07f5;
+}
+
+.add-text {
+  text-align: center;
+}
+
+.add-label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.add-input {
+  width: 20%;
+}
+
+.submit-thanks {
+  display: none;
+}
+
+.submit-thanks.show {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  color: #fc49d8;
+}
+
+input::placeholder {
+  font-family: monospace;
+}
+
+form {
+  margin: 10px;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.add-submit-btn:hover {
+  color: gray;
+}
+
+.contact-input-box {
+  display: inline-block;
+  float: left;
+  text-align: left;
+}
+
+.contact-input-label {
+  display: inline-block;
+  float: left;
+  clear: left;
+  width: 10%;
+  text-align: right;
+}
+
+/* END CONTACT PAGE */

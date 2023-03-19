@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import "../Add/Add.scss";
 
 export default function Add() {
   const test = (e) => {

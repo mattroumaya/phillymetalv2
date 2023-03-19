@@ -25,7 +25,7 @@ const Homepage = ({ allData }) => {
       if (el === data.show_date) {
         return (
           <div className={el}>
-            <a href={data.url} target="_blank">
+            <a href={data.url} target="_blank" className="show-link">
               {data.description} @ {data.venue}
             </a>
           </div>
@@ -34,8 +34,13 @@ const Homepage = ({ allData }) => {
     });
     return (
       <>
-        <h4 className={el}>{el}</h4>
-        {shows}
+        <main id="main">
+          <h4 className={el}>{`${el.substring(5, 7)}/${el.substring(
+            8,
+            10
+          )}/${el.substring(0, 4)}`}</h4>
+          {shows}
+        </main>
       </>
     );
   });

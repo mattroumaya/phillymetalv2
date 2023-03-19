@@ -27,11 +27,12 @@ const ArchiveTable = () => {
     },
   ];
 
-  const tableCustomStyles = {
+  const customStyles = {
     headRow: {
       style: {
-        color: "#223336",
-        backgroundColor: "#e7eef0",
+        color: "#9e07f5",
+        backgroundColor: "black",
+        fontSize: "20px",
       },
     },
     rows: {
@@ -44,11 +45,6 @@ const ArchiveTable = () => {
         backgroundColor: "black",
       },
     },
-    header: {
-      style: {
-        backgroundColor: "black",
-      },
-    },
   };
 
   return (
@@ -58,7 +54,7 @@ const ArchiveTable = () => {
         data={allData}
         defaultSortFieldId={1}
         defaultSortAsc={false}
-        customStyles={tableCustomStyles}
+        customStyles={customStyles}
         highlightOnHover={true}
         dense
         striped
