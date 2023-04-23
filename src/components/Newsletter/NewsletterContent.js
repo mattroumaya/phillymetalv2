@@ -1373,26 +1373,6 @@ const string = `
 <script
   src="https://groot.mailerlite.com/js/w/webforms.min.js?v53b4f9cde81a6500b42e78775969826b"
   type="text/javascript"
-></script>
-
-<footer>
-  <a title="GDPR-compliant Web Analytics" href="https://clicky.com/101383967"
-    ><img
-      alt="Clicky"
-      src="//static.getclicky.com/media/links/badge.gif"
-      border="0"
-  /></a>
-  <script async src="//static.getclicky.com/101383967.js"></script>
-  <noscript
-    ><p>
-      <img
-        alt="Clicky"
-        width="1"
-        height="1"
-        src="//in.getclicky.com/101383967ns.gif"
-      /></p
-  ></noscript>
-</footer>
-`;
+></script>`;
 
 export default string;
