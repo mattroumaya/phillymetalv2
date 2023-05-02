@@ -2,10 +2,42 @@ import DataTable from "react-data-table-component";
 import { useLoaderData } from "react-router-dom";
 import subsetByDate from "../../../util/subsetByDate";
 import "../ArchiveTable/ArchiveTable.scss";
+import { useState, useEffect } from "react";
 
 const ArchiveTable = () => {
   let { allData } = useLoaderData();
   allData = subsetByDate(allData, "past");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filterData, setFilterData] = useState(allData);
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const searchBar = (
+    <input
+      type="text"
+      placeholder="Search"
+      value={searchQuery}
+      onChange={handleSearch}
+      className="search-bar"
+    />
+  );
+
+  useEffect(() => {
+    if (searchQuery !== "") {
+      let tempData = allData.filter((el) => {
+        return (
+          el.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          el.show_date.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          el.venue.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      });
+      setFilterData(tempData);
+    } else {
+      setFilterData(allData);
+    }
+  }, [searchQuery]);
 
   const columns = [
     {
@@ -49,12 +81,14 @@ const ArchiveTable = () => {
     <div className="archive-table">
       <DataTable
         columns={columns}
-        data={allData}
+        data={filterData}
         defaultSortFieldId={1}
         defaultSortAsc={false}
         customStyles={customStyles}
         highlightOnHover={true}
         dense
+        subHeader
+        subHeaderComponent={searchBar}
       />
     </div>
   );
