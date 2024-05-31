@@ -53,11 +53,8 @@ const Header = () => {
             className={`toggle-nav${isActive ? "active" : ""}`}
             href="#"
             onClick={handleClick}
-          >
-            &#9776;
-          </a>
+          ></a>
         </nav>
-
         <div className="logo-header">
           <a href="https://www.phillymetal.net">
             <img alt="phillymetal.net logo" src={logo} className="logo" />
