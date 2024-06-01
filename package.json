@@ -25,6 +25,7 @@
     "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.9.0",
+    "react-select": "^5.8.0",
     "react-table-component": "^0.9.8"
   },
   "devDependencies": {

@@ -3,15 +3,22 @@ import { useLoaderData } from "react-router-dom";
 import subsetByDate from "../../../util/subsetByDate";
 import "../ArchiveTable/ArchiveTable.scss";
 import { useState, useEffect } from "react";
+import Select from "react-select";
 
 const ArchiveTable = () => {
   let { allData } = useLoaderData();
   allData = subsetByDate(allData, "past");
   const [searchQuery, setSearchQuery] = useState("");
   const [filterData, setFilterData] = useState(allData);
-
+  const [selectedVenues, setSelectedVenues] = useState([]);
+  const venueOptions = [...new Set(allData.map((item) => item.venue))]
+    .map((venue) => ({ value: venue, label: venue }))
+    .sort((a, b) => a.label.localeCompare(b.label));
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
+  };
+  const handleVenueChange = (selectedOptions) => {
+    setSelectedVenues(selectedOptions);
   };
 
   const searchBar = (
@@ -24,20 +31,40 @@ const ArchiveTable = () => {
     />
   );
 
+  const venueFilter = (
+    <Select
+      isMulti
+      options={venueOptions}
+      className="venue-filter"
+      classNamePrefix="select"
+      placeholder="Filter by Venue"
+      onChange={handleVenueChange}
+      value={selectedVenues}
+    />
+  );
+
   useEffect(() => {
+    let tempData = allData;
+
     if (searchQuery !== "") {
-      let tempData = allData.filter((el) => {
+      tempData = tempData.filter((el) => {
         return (
           el.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
           el.show_date.toLowerCase().includes(searchQuery.toLowerCase()) ||
           el.venue.toLowerCase().includes(searchQuery.toLowerCase())
         );
       });
-      setFilterData(tempData);
-    } else {
-      setFilterData(allData);
     }
-  }, [searchQuery]);
+
+    if (selectedVenues.length > 0) {
+      const selectedVenueValues = selectedVenues.map((option) => option.value);
+      tempData = tempData.filter((el) =>
+        selectedVenueValues.includes(el.venue)
+      );
+    }
+
+    setFilterData(tempData);
+  }, [searchQuery, selectedVenues, allData]);
 
   const columns = [
     {
@@ -79,6 +106,10 @@ const ArchiveTable = () => {
 
   return (
     <div className="archive-table">
+      <div className="filter-container">
+        {searchBar}
+        {venueFilter}
+      </div>
       <DataTable
         columns={columns}
         data={filterData}
@@ -87,8 +118,6 @@ const ArchiveTable = () => {
         customStyles={customStyles}
         highlightOnHover={true}
         dense
-        subHeader
-        subHeaderComponent={searchBar}
       />
     </div>
   );
