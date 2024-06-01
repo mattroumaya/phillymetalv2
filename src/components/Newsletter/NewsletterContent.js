@@ -1268,9 +1268,11 @@ const string = `
       <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
         <div class="ml-form-embedContent">
           <h4>Weekly Newsletter</h4>
-          <p>
-            Receive one email per week that includes all recently added shows.
-            No spam. No ads.
+          <p>Receive one email per week that includes all recently added shows.</p>
+          <br>
+            <p>No spam.</p> 
+            <br>
+            <p>No ads.</p>
           </p>
         </div>
 

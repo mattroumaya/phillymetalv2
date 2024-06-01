@@ -15,9 +15,49 @@
   padding: 7px 0;
   background: transparent;
   transition: border-color 0.2s;
-  margin-bottom: 50px;
+  margin-bottom: 20px; // Adjust margin as needed
+}
+
+.venue-filter {
+  width: 100%;
+  font-family: monospace;
+  font-size: 1.3rem;
+  .select__control {
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid white;
+    color: white;
+  }
+  .select__input,
+  .select__placeholder,
+  .select__single-value,
+  .select__multi-value {
+    color: white;
+    background-color: transparent;
+  }
+  .select__menu {
+    background: black;
+    color: white;
+  }
+  .select__value-container {
+    padding-left: 0px;
+  }
+  .select__multi-value__remove {
+    color: white;
+    &:hover {
+      background-color: #9e07f5;
+      color: white;
+    }
+  }
 }
 
 .archive-table header {
   background: black;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; // Adjust gap as needed
+  margin-bottom: 20px; // Adjust margin as needed
 }
