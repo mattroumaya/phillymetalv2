@@ -31,6 +31,17 @@ main {
 .show-link {
   padding: 15px;
   font-family: monospace;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.show-flyer {
+  display: block;
+  margin: 0 auto;
+}
+
+.show-item {
+  margin-bottom: 20px;
 }
 
 .show-link:link {
@@ -54,4 +65,29 @@ main {
   display: flex;
   justify-content: space-between;
   align-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.btn-toggle {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  border: solid;
+  border-color: #777;
+  font-size: 13px;
+}
+
+.btn-toggle:hover {
+  border-color: #9e07f5;
+}
+
+.btn-toggle:focus {
+  outline: 0;
 }

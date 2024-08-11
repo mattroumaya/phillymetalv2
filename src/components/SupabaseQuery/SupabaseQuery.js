@@ -5,7 +5,7 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 export async function SupabaseQuery() {
   const supabase = createClient(supabaseUrl, supabaseKey);
   async function getData() {
-    let { data, error } = await supabase
+    let { data } = await supabase
       .from("main")
       .select("*")
       .eq("validated", "true")

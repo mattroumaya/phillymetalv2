@@ -1,6 +1,7 @@
-import React from "react";
 import "../Homepage/Homepage.scss";
 import subsetByDate from "../../../util/subsetByDate";
+import logoShiny from "../../assets/logo_shiny.png";
+import React, { useState } from "react";
 
 const Homepage = ({ allData }) => {
   let data = subsetByDate(allData, "future");
@@ -14,6 +15,21 @@ const Homepage = ({ allData }) => {
     ),
   ];
 
+  const [showFliers, setShowFliers] = useState(true);
+  const toggleFliers = () => {
+    setShowFliers(!showFliers);
+  };
+
+  const showFliersButton = () => {
+    return (
+      <div className="button-container">
+        <button onClick={toggleFliers} className="btn-toggle">
+          {showFliers ? "Hide Fliers" : "Show Fliers"}
+        </button>
+      </div>
+    );
+  };
+
   // map over the headers
   const links = headers.map((el) => {
     // map over all data
@@ -25,6 +41,17 @@ const Homepage = ({ allData }) => {
             <a href={data.url} target="_blank" className="show-link">
               {data.description} @ {data.venue}
             </a>
+
+            {showFliers && (
+              <a href={data.url}>
+                <img
+                  src={data?.flyer || logoShiny}
+                  width={250}
+                  height={300}
+                  className="show-flyer"
+                />
+              </a>
+            )}
           </div>
         );
       }
@@ -42,7 +69,12 @@ const Homepage = ({ allData }) => {
     );
   });
 
-  return <>{links}</>;
+  return (
+    <>
+      {showFliersButton()}
+      {links}
+    </>
+  );
 };
 
 export default Homepage;
