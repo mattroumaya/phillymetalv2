@@ -77,4 +77,17 @@ main {
 .btn-toggle {
   padding: 10px 20px; // Optional: Adjusts the button padding
   font-size: 16px; // Optional: Adjusts the font size
+  background-color: black;
+  color: white;
+  border: solid;
+  border-color: #777;
+  font-size: 13px;
+}
+
+.btn-toggle:hover {
+  border-color: #9e07f5;
+}
+
+.btn-toggle:focus {
+  outline: 0;
 }
