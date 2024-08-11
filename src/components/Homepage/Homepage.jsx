@@ -25,6 +25,14 @@ const Homepage = ({ allData }) => {
             <a href={data.url} target="_blank" className="show-link">
               {data.description} @ {data.venue}
             </a>
+            <a href={data.url}>
+              <img
+                src={data?.flyer}
+                width={250}
+                height={300}
+                className="show-flyer"
+              />
+            </a>
           </div>
         );
       }
