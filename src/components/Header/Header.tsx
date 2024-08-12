@@ -1,15 +1,17 @@
-import logo from "../../assets/logo.png";
 import "../Header/Header.scss";
 import React, { useState } from "react";
 
-const Header = () => {
-  const [isActive, setIsActive] = useState(false);
+import logo from "../../assets/logo.png";
 
-  const handleClick = () => {
+const Header: React.FC = () => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
     setIsActive(!isActive);
   };
 
-  let location = window.location.pathname;
+  let baseUrl: string = window.location.pathname;
 
   return (
     <>
@@ -19,7 +21,7 @@ const Header = () => {
             <li>
               <a
                 href="https://www.phillymetal.net"
-                className={`${location === "/" ? "active" : ""}`}
+                className={`${baseUrl === "/" ? "active" : ""}`}
               >
                 Home
               </a>
@@ -27,7 +29,7 @@ const Header = () => {
             <li>
               <a
                 href="https://www.phillymetal.net/archive"
-                className={`${location === "/archive" ? "active" : ""}`}
+                className={`${baseUrl === "/archive" ? "active" : ""}`}
               >
                 Archive
               </a>
@@ -35,7 +37,7 @@ const Header = () => {
             <li>
               <a
                 href="https://www.phillymetal.net/newsletter"
-                className={`${location === "/newsletter" ? "active" : ""}`}
+                className={`${baseUrl === "/newsletter" ? "active" : ""}`}
               >
                 Newsletter
               </a>
@@ -43,7 +45,7 @@ const Header = () => {
             <li>
               <a
                 href="https://www.phillymetal.net/add"
-                className={`${location === "/add" ? "active" : ""}`}
+                className={`${baseUrl === "/add" ? "active" : ""}`}
               >
                 Add Something
               </a>
