@@ -2,106 +2,70 @@ import React, { useState } from "react";
 import "../Homepage/Homepage.scss";
 import subsetByDate from "../../../util/subsetByDate";
 import logoFlier from "../../assets/logo_flier.png";
+import {
+  CCardTitle,
+  CCardBody,
+  CCard,
+  CCardImage,
+  CListGroup,
+  CListGroupItem,
+  CButton,
+} from "@coreui/react";
 
-interface ShowData {
-  show_date: string | number | Date;
-  url: string;
-  description: string;
-  venue: string;
-  flyer?: string;
-}
-
-interface HomepageProps {
-  allData: ShowData[];
-}
-
-const Homepage: React.FC<HomepageProps> = ({ allData }) => {
-  // Use the subsetByDate function to filter the data
-  let data = subsetByDate(allData, "future");
-
-  // Initialize an array for unique show dates
-  const headers: (string | number | Date)[] = [];
-  const seen: Record<string, boolean> = {};
-
-  // Loop through the data to extract unique show dates
-  data.forEach((el: { show_date: string | number | Date }) => {
-    const dateKey = el.show_date.toString();
-    if (!seen[dateKey]) {
-      seen[dateKey] = true;
-      headers.push(el.show_date);
-    }
-  });
-
-  // State for controlling the visibility of fliers
+const Homepage = ({ allData }) => {
+  const data = subsetByDate(allData, "future");
   const [showFliers, setShowFliers] = useState(true);
-  const toggleFliers = () => {
-    setShowFliers(!showFliers);
-  };
+  const toggleFliers = () => setShowFliers(!showFliers);
 
-  // Button component for toggling flier visibility
-  const showFliersButton = () => (
-    <div className="button-container">
-      <button onClick={toggleFliers} className="btn-toggle">
-        {showFliers ? "Hide Fliers" : "Show Fliers"}
-      </button>
-    </div>
-  );
+  // Group shows by unique date
+  const groupedShows = data.reduce((acc, show) => {
+    const dateKey = show.show_date.toString();
+    if (!acc[dateKey]) acc[dateKey] = [];
+    acc[dateKey].push(show);
+    return acc;
+  }, {});
 
-  // Map over the headers to generate the links and show elements
-  const links = headers.map((el) => {
-    const shows = data.map(
-      (dataItem: {
-        show_date: string | number | Date;
-        url: React.Key;
-        description:
-          | string
-          | React.ReactElement<any, string | React.JSXElementConstructor<any>>;
-        venue:
-          | string
-          | React.ReactElement<any, string | React.JSXElementConstructor<any>>;
-        flyer: any;
-      }) => {
-        if (el === dataItem.show_date) {
-          return (
-            <div className={el.toString()} key={dataItem.url}>
-              <a href={dataItem.url} target="_blank" className="show-link">
-                {dataItem.description} @ {dataItem.venue}
-              </a>
-
+  const links = Object.entries(groupedShows).map(([date, shows], index) => (
+    <main id="main" key={`${date}-${index}`} className="content-block">
+      {shows.map((dataItem, subIndex) => (
+        <a
+          href={dataItem.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          key={`link-${date}-${subIndex}`}
+        >
+          <CCard key={`card-${date}-${subIndex}`} className="show-card">
+            <CCardBody>
+              <CCardTitle className="show-description">
+                {dataItem.description}
+              </CCardTitle>
+              <CListGroup flush>
+                <CListGroupItem>{dataItem.venue}</CListGroupItem>
+                <CListGroupItem>{dataItem.show_date}</CListGroupItem>
+              </CListGroup>
               {showFliers && (
-                <a href={dataItem.url}>
-                  <img
-                    src={dataItem.flyer || logoFlier}
-                    width={dataItem.flyer ? 250 : 380}
-                    height={dataItem.flyer ? 300 : 205.71}
-                    className="show-flyer"
-                  />
-                </a>
+                <CCardImage
+                  orientation="top"
+                  src={dataItem.flyer || logoFlier}
+                  alt="Show Flyer"
+                  width={dataItem.flyer ? 250 : 380}
+                  height={dataItem.flyer ? 300 : 205.71}
+                />
               )}
-            </div>
-          );
-        }
-        return null;
-      }
-    );
-
-    return (
-      <main id="main" key={el.toString()}>
-        <h4 className={el.toString()}>
-          {`${el.toString().substring(5, 7)}/${el
-            .toString()
-            .substring(8, 10)}/${el.toString().substring(0, 4)}`}
-        </h4>
-        {shows}
-      </main>
-    );
-  });
+            </CCardBody>
+          </CCard>
+        </a>
+      ))}
+    </main>
+  ));
 
   return (
-    <>
-      {showFliersButton()}
-      {links}
-    </>
+    <div className="homepage-wrapper">
+      <div className="content-wrapper">
+        <CButton onClick={toggleFliers}>Toggle Fliers</CButton>
+        {links}
+      </div>
+    </div>
   );
 };
 
