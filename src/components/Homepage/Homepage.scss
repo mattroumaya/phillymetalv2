@@ -50,8 +50,8 @@ li {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2rem;
-  gap: 2rem;
+  padding: 0rem;
+  gap: 0.5rem;
   margin: 0 auto;
 }
 
@@ -84,8 +84,6 @@ li {
   font-size: 13px;
   background-color: black;
   color: white;
-  border: 1px solid #777;
-  cursor: pointer;
 }
 
 .btn-toggle:hover {
@@ -129,6 +127,11 @@ li {
 .show-flyer {
   display: block;
   margin: 0 auto;
+}
+
+.toggle-fliers-btn {
+  margin-bottom: 10px;
+  width: 200px;
 }
 
 main {

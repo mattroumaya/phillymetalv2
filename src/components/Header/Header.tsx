@@ -13,7 +13,7 @@ const Header: React.FC = () => {
           </a>
         </div>
       </header>
-      <DropdownMenu />
+      <DropdownMenu className="dropdown-menu" />
     </>
   );
 };

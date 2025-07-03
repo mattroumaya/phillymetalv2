@@ -41,15 +41,24 @@ const Homepage = ({ allData }) => {
               </CCardTitle>
               <CListGroup flush>
                 <CListGroupItem>{dataItem.venue}</CListGroupItem>
-                <CListGroupItem>{dataItem.show_date}</CListGroupItem>
+                <CListGroupItem>
+                  {(() => {
+                    const [year, month, day] = dataItem.show_date.split("-");
+                    const date = new Date(Date.UTC(year, month - 1, day)); // treat as UTC
+                    const monthName = date.toLocaleString("en-US", {
+                      month: "long",
+                    });
+                    return `${monthName} ${date.getUTCDate()}, ${date.getUTCFullYear()}`;
+                  })()}
+                </CListGroupItem>
               </CListGroup>
               {showFliers && (
                 <CCardImage
                   orientation="top"
                   src={dataItem.flyer || logoFlier}
                   alt="Show Flyer"
-                  width={dataItem.flyer ? 250 : 380}
-                  height={dataItem.flyer ? 300 : 205.71}
+                  width={250}
+                  height={300}
                 />
               )}
             </CCardBody>
@@ -62,7 +71,9 @@ const Homepage = ({ allData }) => {
   return (
     <div className="homepage-wrapper">
       <div className="content-wrapper">
-        <CButton onClick={toggleFliers}>Toggle Fliers</CButton>
+        <CButton className="toggle-fliers-btn" onClick={toggleFliers}>
+          toggle fliers
+        </CButton>
         {links}
       </div>
     </div>
