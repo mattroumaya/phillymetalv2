@@ -16,7 +16,7 @@ nav {
 }
 
 .menu li {
-  margin: 0px 50px 0px 0px;
+  margin: 0px 10px 0px 0px;
   float: left;
   list-style: none;
   font-size: 17px;
@@ -47,6 +47,10 @@ nav {
   display: block;
   margin: 0 auto;
   max-width: 25%;
+}
+
+.dropdown-toggle {
+  width: 200px;
 }
 
 // responsive
@@ -125,6 +129,10 @@ nav {
 
   .menu a {
     display: block;
+  }
+
+  .menu-container.wrapper {
+    margin-bottom: 10px;
   }
 
   .toggle-nav {
