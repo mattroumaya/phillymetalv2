@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root, { loader as rootLoader } from "./routes/root";
+import Root from "./routes/root";
 import Add from "./components/Add/Add";
 import ArchiveTable from "./components/ArchiveTable/ArchiveTable";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
@@ -14,7 +14,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    loader: rootLoader,
   },
   {
     path: "/add",
@@ -23,7 +22,6 @@ const router = createBrowserRouter([
   {
     path: "/archive",
     element: <ArchiveTable />,
-    loader: rootLoader,
   },
   {
     path: "/newsletter",
