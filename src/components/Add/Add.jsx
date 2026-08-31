@@ -21,7 +21,7 @@ export default function Add() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:3000/add-show", {
+      const response = await fetch("https://api.phillymetal.net/add-show", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

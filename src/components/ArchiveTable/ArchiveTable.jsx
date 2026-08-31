@@ -1,9 +1,9 @@
-import DataTable from "react-data-table-component";
-import { useLoaderData } from "react-router-dom";
-import subsetByDate from "../../../util/subsetByDate";
+import DataTableModule from "react-data-table-component";
 import "../ArchiveTable/ArchiveTable.scss";
 import { useState, useEffect } from "react";
 import Select from "react-select";
+
+const DataTable = DataTableModule.default ?? DataTableModule;
 
 const ArchiveTable = () => {
   const [apiData, setApiData] = useState([]);
