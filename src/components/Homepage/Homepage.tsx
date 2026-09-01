@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Homepage/Homepage.scss";
-import subsetByDate from "../../../util/subsetByDate";
 import logoFlier from "../../assets/logo_flier.png";
 import {
   CCardTitle,
@@ -12,20 +11,36 @@ import {
   CButton,
 } from "@coreui/react";
 
-const Homepage = ({ allData }) => {
-  const data = subsetByDate(allData, "future");
+const Homepage = () => {
   const [showFliers, setShowFliers] = useState(true);
+  const [apiData, setApiData] = useState([]);
   const toggleFliers = () => setShowFliers(!showFliers);
+  const [loading, setLoading] = useState(true);
 
-  // Group shows by unique date
-  const groupedShows = data.reduce((acc, show) => {
-    const dateKey = show.show_date.toString();
-    if (!acc[dateKey]) acc[dateKey] = [];
-    acc[dateKey].push(show);
-    return acc;
-  }, {});
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const response = await fetch(
+          "https://api.phillymetal.net/grouped-shows"
+        );
 
-  const links = Object.entries(groupedShows).map(([date, shows], index) => (
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        const result = await response.json();
+        setApiData(result.groupedShows);
+      } catch (error) {
+        console.error("API request failed:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  const links = Object.entries(apiData).map(([date, shows], index) => (
     <main id="main" key={`${date}-${index}`} className="content-block">
       {shows.map((dataItem, subIndex) => (
         <a
@@ -43,7 +58,8 @@ const Homepage = ({ allData }) => {
                 <CListGroupItem>{dataItem.venue}</CListGroupItem>
                 <CListGroupItem>
                   {(() => {
-                    const [year, month, day] = dataItem.show_date.split("-");
+                    const [year, month, day] =
+                      dataItem.formatted_date.split("-");
                     const date = new Date(Date.UTC(year, month - 1, day)); // treat as UTC
                     const monthName = date.toLocaleString("en-US", {
                       month: "long",
@@ -67,6 +83,14 @@ const Homepage = ({ allData }) => {
       ))}
     </main>
   ));
+
+  if (loading) {
+    return (
+      <div>
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="homepage-wrapper">
