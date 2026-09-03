@@ -15,6 +15,7 @@ export default function Add() {
       show_date: form.elements.date.value,
       description: form.elements.bands.value.trim(),
       url: form.elements.href.value.trim() || null,
+      submittedBy: form.elements.submittedBy.value.trim() || "Anonymous User",
     };
 
     setIsSubmitting(true);
@@ -104,6 +105,19 @@ export default function Add() {
         </label>
         <br />
         <input type="url" id="href" name="href" className="add-input" />
+        <br />
+
+        <label htmlFor="href" className="add-label">
+          Submitted By:
+        </label>
+        <br />
+        <input
+          type="text"
+          id="submittedBy"
+          name="submittedBy"
+          className="add-input"
+          placeholder="Anonymous User"
+        />
         <br />
 
         <button
