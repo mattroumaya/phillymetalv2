@@ -12,6 +12,7 @@ import {
 } from "@coreui/react";
 
 const Homepage = () => {
+  const SUBMITTED_BY_SYSTEM = "SYSTEM";
   const [showFliers, setShowFliers] = useState(true);
   const [apiData, setApiData] = useState([]);
   const toggleFliers = () => setShowFliers(!showFliers);
@@ -76,6 +77,11 @@ const Homepage = () => {
                   width={250}
                   height={300}
                 />
+              )}
+              {dataItem.submitted_by !== SUBMITTED_BY_SYSTEM && (
+                <CListGroupItem className="submittedBy">
+                  Show submitted by: {dataItem.submitted_by}
+                </CListGroupItem>
               )}
             </CCardBody>
           </CCard>
