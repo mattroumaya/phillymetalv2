@@ -41,6 +41,7 @@ const Homepage = () => {
     loadData();
   }, []);
 
+  console.log(apiData);
   const links = Object.entries(apiData).map(([date, shows], index) => (
     <main id="main" key={`${date}-${index}`} className="content-block">
       {shows.map((dataItem, subIndex) => (
