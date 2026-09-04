@@ -73,7 +73,7 @@ const Homepage = () => {
               {showFliers && (
                 <CCardImage
                   orientation="top"
-                  src={dataItem.flyer || logoFlier}
+                  src={dataItem.flyer_r2 || dataItem.flyer || logoFlier}
                   alt="Show Flyer"
                   width={250}
                   height={300}
