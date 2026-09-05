@@ -53,23 +53,25 @@ const Homepage = () => {
         >
           <CCard key={`card-${date}-${subIndex}`} className="show-card">
             <CCardBody>
-              <CCardTitle className="show-description">
-                {dataItem.description}
-              </CCardTitle>
-              <CListGroup flush>
-                <CListGroupItem>{dataItem.venue}</CListGroupItem>
-                <CListGroupItem>
-                  {(() => {
-                    const [year, month, day] =
-                      dataItem.formatted_date.split("-");
-                    const date = new Date(Date.UTC(year, month - 1, day)); // treat as UTC
-                    const monthName = date.toLocaleString("en-US", {
-                      month: "long",
-                    });
-                    return `${monthName} ${date.getUTCDate()}, ${date.getUTCFullYear()}`;
-                  })()}
-                </CListGroupItem>
-              </CListGroup>
+              <div className="show-info-container">
+                <CCardTitle className="show-description">
+                  {dataItem.description}
+                </CCardTitle>
+                <CListGroup flush>
+                  <CListGroupItem>{dataItem.venue}</CListGroupItem>
+                  <CListGroupItem>
+                    {(() => {
+                      const [year, month, day] =
+                        dataItem.formatted_date.split("-");
+                      const date = new Date(Date.UTC(year, month - 1, day)); // treat as UTC
+                      const monthName = date.toLocaleString("en-US", {
+                        month: "long",
+                      });
+                      return `${monthName} ${date.getUTCDate()}, ${date.getUTCFullYear()}`;
+                    })()}
+                  </CListGroupItem>
+                </CListGroup>
+              </div>
               {showFliers && (
                 <CCardImage
                   orientation="top"

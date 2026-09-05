@@ -112,11 +112,35 @@ li {
 
 .card .list-group-item {
   list-style-type: none;
-  color: white;
+  color: #000;
+}
+
+.list-group-flush {
+  padding: 0px;
+  color: #000;
 }
 
 .show-description {
-  color: white;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.show-info-container {
+  border: 2px solid #333;
+  padding: 0px;
+  list-style-position: inside;
+  background-color: #fff;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.show-info-container .show-description {
+  color: #000;
+  font-size: 20px;
+}
+
+.show-info-container {
+  color: #000;
   font-size: 20px;
 }
 
