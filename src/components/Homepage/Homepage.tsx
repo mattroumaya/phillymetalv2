@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { usePageTitle } from "../../usePageTitle";
 import "../Homepage/Homepage.scss";
 import logoFlier from "../../assets/logo_flier.png";
 import {
@@ -12,6 +13,7 @@ import {
 } from "@coreui/react";
 
 const Homepage = () => {
+  usePageTitle("phillymetal.net");
   const SUBMITTED_BY_SYSTEM = "SYSTEM";
   const [showFliers, setShowFliers] = useState(true);
   const [apiData, setApiData] = useState([]);

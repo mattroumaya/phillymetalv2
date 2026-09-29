@@ -2,10 +2,12 @@ import DataTableModule from "react-data-table-component";
 import "../ArchiveTable/ArchiveTable.scss";
 import { useState, useEffect } from "react";
 import Select from "react-select";
+import { usePageTitle } from "../../usePageTitle";
 
 const DataTable = DataTableModule.default ?? DataTableModule;
 
 const ArchiveTable = () => {
+  usePageTitle("Archive · phillymetal.net");
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");

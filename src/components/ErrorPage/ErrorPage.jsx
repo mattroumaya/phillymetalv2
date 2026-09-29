@@ -1,8 +1,10 @@
 import { useRouteError } from "react-router-dom";
 import metalcat from "../../assets/metalcat.jpeg";
+import { usePageTitle } from "../../usePageTitle";
 import "../ErrorPage/ErrorPage.scss";
 
 export default function ErrorPage() {
+  usePageTitle("Something went wrong · phillymetal.net");
   const error = useRouteError();
   console.error(error);
 

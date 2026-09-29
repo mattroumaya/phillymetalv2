@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { usePageTitle } from "../../usePageTitle";
 import "../Add/Add.scss";
 
 export default function Add() {
+  usePageTitle("Add a show · phillymetal.net");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
