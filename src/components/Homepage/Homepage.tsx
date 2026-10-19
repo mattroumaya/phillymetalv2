@@ -94,27 +94,36 @@ const Homepage = () => {
     </main>
   ));
 
-  if (loading) {
-    return (
-      <div>
-        <p>
-          Offline for maintenance for a day or so. Email info@phillymetal.net if
-          you want a spreadsheet of shows!
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className="homepage-wrapper">
-      <div className="content-wrapper">
-        <CButton className="toggle-fliers-btn" onClick={toggleFliers}>
-          toggle fliers
-        </CButton>
-        {links}
-      </div>
+      <p style={{ textAlign: "center" }}>
+        Offline for maintenance for a day or so. Email info@phillymetal.net if
+        you want a spreadsheet of shows!
+      </p>
     </div>
   );
+
+  // if (loading) {
+  //   return (
+  //     <div>
+  //       <p>
+  //         Offline for maintenance for a day or so. Email info@phillymetal.net if
+  //         you want a spreadsheet of shows!
+  //       </p>
+  //     </div>
+  //   );
+  // }
+
+  // return (
+  //   <div className="homepage-wrapper">
+  //     <div className="content-wrapper">
+  //       <CButton className="toggle-fliers-btn" onClick={toggleFliers}>
+  //         toggle fliers
+  //       </CButton>
+  //       {links}
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default Homepage;
