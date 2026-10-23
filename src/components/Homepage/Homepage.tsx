@@ -43,6 +43,7 @@ const Homepage = () => {
     loadData();
   }, []);
 
+  console.log(apiData);
   const links = Object.entries(apiData).map(([date, shows], index) => (
     <main id="main" key={`${date}-${index}`} className="content-block">
       {shows.map((dataItem, subIndex) => (
@@ -94,36 +95,24 @@ const Homepage = () => {
     </main>
   ));
 
+  if (loading) {
+    return (
+      <div>
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="homepage-wrapper">
-      <p style={{ textAlign: "center" }}>
-        Offline for maintenance for a day or so. Email info@phillymetal.net if
-        you want a spreadsheet of shows!
-      </p>
+      <div className="content-wrapper">
+        <CButton className="toggle-fliers-btn" onClick={toggleFliers}>
+          toggle fliers
+        </CButton>
+        {links}
+      </div>
     </div>
   );
-
-  // if (loading) {
-  //   return (
-  //     <div>
-  //       <p>
-  //         Offline for maintenance for a day or so. Email info@phillymetal.net if
-  //         you want a spreadsheet of shows!
-  //       </p>
-  //     </div>
-  //   );
-  // }
-
-  // return (
-  //   <div className="homepage-wrapper">
-  //     <div className="content-wrapper">
-  //       <CButton className="toggle-fliers-btn" onClick={toggleFliers}>
-  //         toggle fliers
-  //       </CButton>
-  //       {links}
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default Homepage;
